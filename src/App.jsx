@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "./components/Card";
+import "./App.css";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -21,20 +22,25 @@ const App = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Enter Your Name"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+    <div className="App">
+      <div className="search-form">
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Enter Your Name"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
 
-      <button type="button" onClick={submitHanlder}>
-        Submit
-      </button>
-      {recipes.map((item) => {
-        return <Card recipe={item} />;
-      })}
+        <button type="button" onClick={submitHanlder} className="search-button">
+          Submit
+        </button>
+      </div>
+      <div className="recipes">
+        {recipes.map((item) => {
+          return <Card recipe={item} />;
+        })}
+      </div>
     </div>
   );
 };
